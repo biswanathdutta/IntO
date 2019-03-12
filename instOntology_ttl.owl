@@ -1,0 +1,1311 @@
+@prefix : <https://w3id.org/into#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@base <https://w3id.org/into> .
+
+<https://w3id.org/into> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/into#affiliationOf
+:affiliationOf rdf:type owl:ObjectProperty ;
+               owl:inverseOf :hasAffiliation ;
+               rdfs:domain :Unit ;
+               rdfs:range :Person .
+
+
+###  https://w3id.org/into#belongsToCentre
+:belongsToCentre rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range :Centre .
+
+
+###  https://w3id.org/into#centretHead
+:centretHead rdf:type owl:ObjectProperty ;
+             rdfs:domain :Centre ;
+             rdfs:range :Teacher .
+
+
+###  https://w3id.org/into#editorOfEvents
+:editorOfEvents rdf:type owl:ObjectProperty ;
+                owl:inverseOf :eventsEditor ;
+                rdfs:domain :Teacher ;
+                rdfs:range :Events .
+
+
+###  https://w3id.org/into#eventsEditor
+:eventsEditor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Events ;
+              rdfs:range :Teacher .
+
+
+###  https://w3id.org/into#hasAffiliation
+:hasAffiliation rdf:type owl:ObjectProperty ;
+                rdfs:domain :Person ;
+                rdfs:range :Unit .
+
+
+###  https://w3id.org/into#hasArticlePublication
+:hasArticlePublication rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Person ;
+                       rdfs:range :Article .
+
+
+###  https://w3id.org/into#hasAuthor
+:hasAuthor rdf:type owl:ObjectProperty ;
+           rdfs:domain :Publication ;
+           rdfs:range :Person .
+
+
+###  https://w3id.org/into#hasBookPublication
+:hasBookPublication rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Person ;
+                    rdfs:range :Book .
+
+
+###  https://w3id.org/into#hasDiscipline
+:hasDiscipline rdf:type owl:ObjectProperty ;
+               rdfs:domain :Student ;
+               rdfs:range :Discipline .
+
+
+###  https://w3id.org/into#hasGender
+:hasGender rdf:type owl:ObjectProperty ;
+           rdfs:domain :Person ;
+           rdfs:range :Gender .
+
+
+###  https://w3id.org/into#hasPrincipalInvestigator
+:hasPrincipalInvestigator rdf:type owl:ObjectProperty ;
+                          owl:inverseOf :principleInvestigatorOf ;
+                          rdfs:domain :Project ;
+                          rdfs:range :Teacher .
+
+
+###  https://w3id.org/into#hasQualification
+:hasQualification rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Person ;
+                  rdfs:range :Qualification .
+
+
+###  https://w3id.org/into#hasResearchInterest
+:hasResearchInterest rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :researchInterestOf ;
+                     rdfs:domain :Person ;
+                     rdfs:range :Research_Interest .
+
+
+###  https://w3id.org/into#hasSupervisor
+:hasSupervisor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :supervisorOf ;
+               rdfs:domain :Student ;
+               rdfs:range :Teacher .
+
+
+###  https://w3id.org/into#listedCourse
+:listedCourse rdf:type owl:ObjectProperty ;
+              rdfs:domain :Centre ;
+              rdfs:range :Course_Name .
+
+
+###  https://w3id.org/into#pgStudent
+:pgStudent rdf:type owl:ObjectProperty ;
+           rdfs:domain :Postgraduate_Student ;
+           rdfs:range :Postgraduate_Course .
+
+
+###  https://w3id.org/into#principleInvestigatorOf
+:principleInvestigatorOf rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/into#projectAssistantOf
+:projectAssistantOf rdf:type owl:ObjectProperty ;
+                    rdfs:domain :ProjectAssistant ;
+                    rdfs:range :Project .
+
+
+###  https://w3id.org/into#researchArea
+:researchArea rdf:type owl:ObjectProperty ;
+              rdfs:domain :Person ;
+              rdfs:range :Research_Topic .
+
+
+###  https://w3id.org/into#researchInterestOf
+:researchInterestOf rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Research_Interest ;
+                    rdfs:range :Person .
+
+
+###  https://w3id.org/into#supervisorOf
+:supervisorOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Teacher ;
+              rdfs:range :Student .
+
+
+###  https://w3id.org/into#ugStudent
+:ugStudent rdf:type owl:ObjectProperty ;
+           rdfs:domain :Undergraduate_Student ;
+           rdfs:range :Undergraduate_Course .
+
+
+###  https://w3id.org/into#unitHead
+:unitHead rdf:type owl:ObjectProperty ;
+          rdfs:domain :Unit ;
+          rdfs:range :Teacher .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/into#ZIP
+:ZIP rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Person ;
+     rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#age
+:age rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Person ;
+     rdfs:range xsd:int .
+
+
+###  https://w3id.org/into#award
+:award rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Person ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Award received by a person"^^xsd:string ;
+       rdfs:label "Award"^^xsd:string .
+
+
+###  https://w3id.org/into#basicSalary
+:basicSalary rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :AdministrativeStaff
+                                         :Teacher
+                                       )
+                         ] ;
+             rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#birthday
+:birthday rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Person ;
+          rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#city
+:city rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Person ;
+      rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#country
+:country rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Person ;
+         rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#email
+:email rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Person ;
+       rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#eventsAttended
+:eventsAttended rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Person ;
+                rdfs:range xsd:string ;
+                rdfs:comment "A person attended national and internatinal events, for example, Seminars, Conferences, Symposiums, Workshops, etc."^^xsd:string ;
+                rdfs:label "Events Attended"^^xsd:string .
+
+
+###  https://w3id.org/into#firstName
+:firstName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:string ;
+           rdfs:label "First Name"^^xsd:string .
+
+
+###  https://w3id.org/into#grossSalary
+:grossSalary rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :AdministrativeStaff
+                                         :Teacher
+                                       )
+                         ] ;
+             rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#hasProjectDuration
+:hasProjectDuration rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:int .
+
+
+###  https://w3id.org/into#hasTeachingExperience
+:hasTeachingExperience rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Teacher ;
+                       rdfs:range xsd:integer .
+
+
+###  https://w3id.org/into#heldOn
+:heldOn rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Events ;
+        rdfs:range xsd:string ;
+        rdfs:comment "The conference, seminar, symposium or workshop held on the year"^^xsd:string .
+
+
+###  https://w3id.org/into#homepage
+:homepage rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Person ;
+          rdfs:range xsd:anyURI .
+
+
+###  https://w3id.org/into#lastName
+:lastName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Person ;
+          rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#phoneNo
+:phoneNo rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Person ;
+         rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#projectEnds
+:projectEnds rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Project ;
+             rdfs:range xsd:date .
+
+
+###  https://w3id.org/into#projectStarted
+:projectStarted rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Project ;
+                rdfs:range xsd:date .
+
+
+###  https://w3id.org/into#publicationDate
+:publicationDate rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Publication ;
+                 rdfs:range xsd:date .
+
+
+###  https://w3id.org/into#resourcePersonOf
+:resourcePersonOf rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Person ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "A person being invited as a resource person to deliver lectures, etc."^^xsd:string .
+
+
+###  https://w3id.org/into#rollNo
+:rollNo rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Person ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Institutional Roll Number of a person"^^xsd:string ;
+        rdfs:label "Roll Number"^^xsd:string .
+
+
+###  https://w3id.org/into#state
+:state rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Person ;
+       rdfs:range xsd:string .
+
+
+###  https://w3id.org/into#topicOf
+:topicOf rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Events ;
+         rdfs:range xsd:string ;
+         rdfs:comment "The topic of the conference, symposium, seminar or workshop"^^xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/into#ADIS
+:ADIS rdf:type owl:Class ;
+      rdfs:subClassOf :Postgraduate_Course ;
+      owl:disjointWith :MMath ,
+                       :MStat ;
+      rdfs:comment "This course is equivalent to MLISc degree"^^xsd:string .
+
+
+###  https://w3id.org/into#AdministrativeStaff
+:AdministrativeStaff rdf:type owl:Class ;
+                     rdfs:subClassOf :Person ;
+                     owl:disjointWith :Assistant ,
+                                      :Student ,
+                                      :Teacher .
+
+
+###  https://w3id.org/into#Article
+:Article rdf:type owl:Class ;
+         rdfs:subClassOf :Publication ;
+         owl:disjointWith :Book ,
+                          :Periodical ,
+                          :Proceedings ,
+                          :Thesis .
+
+
+###  https://w3id.org/into#Assistant
+:Assistant rdf:type owl:Class ;
+           rdfs:subClassOf :Person ;
+           owl:disjointWith :Student ,
+                            :Teacher .
+
+
+###  https://w3id.org/into#Assistant_professor
+:Assistant_professor rdf:type owl:Class ;
+                     rdfs:subClassOf :Teacher ;
+                     owl:disjointWith :Associate_Professor ,
+                                      :Professor .
+
+
+###  https://w3id.org/into#Associate_Professor
+:Associate_Professor rdf:type owl:Class ;
+                     rdfs:subClassOf :Teacher ;
+                     owl:disjointWith :Professor .
+
+
+###  https://w3id.org/into#BMath
+:BMath rdf:type owl:Class ;
+       rdfs:subClassOf :Undergraduate_Course ;
+       owl:disjointWith :BStat .
+
+
+###  https://w3id.org/into#BStat
+:BStat rdf:type owl:Class ;
+       rdfs:subClassOf :Undergraduate_Course .
+
+
+###  https://w3id.org/into#Book
+:Book rdf:type owl:Class ;
+      rdfs:subClassOf :Publication ;
+      owl:disjointWith :Periodical ,
+                       :Proceedings ,
+                       :Thesis .
+
+
+###  https://w3id.org/into#BookArticle
+:BookArticle rdf:type owl:Class ;
+             rdfs:subClassOf :Article ;
+             owl:disjointWith :ConferenceArticle ,
+                              :JournalArticle ,
+                              :WorkshopArticle .
+
+
+###  https://w3id.org/into#Centre
+:Centre rdf:type owl:Class ;
+        rdfs:subClassOf owl:Thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :listedCourse ;
+                          owl:someValuesFrom :Course_Name
+                        ] .
+
+
+###  https://w3id.org/into#Conference
+:Conference rdf:type owl:Class ;
+            rdfs:subClassOf :Events ;
+            owl:disjointWith :Workshop .
+
+
+###  https://w3id.org/into#ConferenceArticle
+:ConferenceArticle rdf:type owl:Class ;
+                   rdfs:subClassOf :Article ;
+                   owl:disjointWith :JournalArticle ,
+                                    :WorkshopArticle .
+
+
+###  https://w3id.org/into#Course_Name
+:Course_Name rdf:type owl:Class .
+
+
+###  https://w3id.org/into#Director
+:Director rdf:type owl:Class ;
+          rdfs:subClassOf :AdministrativeStaff .
+
+
+###  https://w3id.org/into#Discipline
+:Discipline rdf:type owl:Class .
+
+
+###  https://w3id.org/into#DoctoralThesis
+:DoctoralThesis rdf:type owl:Class ;
+                rdfs:subClassOf :Thesis ;
+                owl:disjointWith :MastersThesis .
+
+
+###  https://w3id.org/into#Events
+:Events rdf:type owl:Class .
+
+
+###  https://w3id.org/into#Gender
+:Gender rdf:type owl:Class ;
+        rdfs:comment "Programes offered by the Institute"^^xsd:string .
+
+
+###  https://w3id.org/into#Journal
+:Journal rdf:type owl:Class ;
+         rdfs:subClassOf :Periodical ;
+         owl:disjointWith :Magazine .
+
+
+###  https://w3id.org/into#JournalArticle
+:JournalArticle rdf:type owl:Class ;
+                rdfs:subClassOf :Article ;
+                owl:disjointWith :WorkshopArticle .
+
+
+###  https://w3id.org/into#Junior_Research_Student
+:Junior_Research_Student rdf:type owl:Class ;
+                         rdfs:subClassOf :Research_Student ;
+                         owl:disjointWith :Senior_Research_Student .
+
+
+###  https://w3id.org/into#MMath
+:MMath rdf:type owl:Class ;
+       rdfs:subClassOf :Postgraduate_Course ;
+       owl:disjointWith :MStat .
+
+
+###  https://w3id.org/into#MStat
+:MStat rdf:type owl:Class ;
+       rdfs:subClassOf :Postgraduate_Course .
+
+
+###  https://w3id.org/into#Magazine
+:Magazine rdf:type owl:Class ;
+          rdfs:subClassOf :Periodical .
+
+
+###  https://w3id.org/into#MastersThesis
+:MastersThesis rdf:type owl:Class ;
+               rdfs:subClassOf :Thesis .
+
+
+###  https://w3id.org/into#Periodical
+:Periodical rdf:type owl:Class ;
+            rdfs:subClassOf :Publication ;
+            owl:disjointWith :Proceedings ,
+                             :Thesis .
+
+
+###  https://w3id.org/into#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf owl:Thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasAffiliation ;
+                          owl:someValuesFrom :Unit
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :belongsToCentre ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Centre
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasGender ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Gender
+                        ] .
+
+
+###  https://w3id.org/into#PhD_Programme
+:PhD_Programme rdf:type owl:Class ;
+               rdfs:subClassOf :Course_Name ;
+               owl:disjointWith :PostDoc_Programme ,
+                                :Postgraduate_Course ,
+                                :Undergraduate_Course .
+
+
+###  https://w3id.org/into#PostDoc_Programme
+:PostDoc_Programme rdf:type owl:Class ;
+                   rdfs:subClassOf :Course_Name ;
+                   owl:disjointWith :Postgraduate_Course ,
+                                    :Undergraduate_Course ;
+                   rdfs:label "Post Doctoral Programme"^^xsd:string .
+
+
+###  https://w3id.org/into#Postgraduate_Course
+:Postgraduate_Course rdf:type owl:Class ;
+                     rdfs:subClassOf :Course_Name ;
+                     owl:disjointWith :Undergraduate_Course .
+
+
+###  https://w3id.org/into#Postgraduate_Student
+:Postgraduate_Student rdf:type owl:Class ;
+                      rdfs:subClassOf :Student ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :pgStudent ;
+                                        owl:someValuesFrom :Postgraduate_Course
+                                      ] ;
+                      owl:disjointWith :Research_Student ,
+                                       :Undergraduate_Student .
+
+
+###  https://w3id.org/into#Proceedings
+:Proceedings rdf:type owl:Class ;
+             rdfs:subClassOf :Publication ;
+             owl:disjointWith :Thesis .
+
+
+###  https://w3id.org/into#Professor
+:Professor rdf:type owl:Class ;
+           rdfs:subClassOf :Teacher .
+
+
+###  https://w3id.org/into#Project
+:Project rdf:type owl:Class ;
+         rdfs:subClassOf owl:Thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasProjectDuration ;
+                           owl:maxCardinality "36"^^xsd:nonNegativeInteger
+                         ] ;
+         rdfs:comment "List of on going or finished projects"^^xsd:string .
+
+
+###  https://w3id.org/into#ProjectAssistant
+:ProjectAssistant rdf:type owl:Class ;
+                  rdfs:subClassOf :Assistant .
+
+
+###  https://w3id.org/into#Publication
+:Publication rdf:type owl:Class ;
+             rdfs:subClassOf owl:Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasAuthor ;
+                               owl:someValuesFrom :Person
+                             ] .
+
+
+###  https://w3id.org/into#Qualification
+:Qualification rdf:type owl:Class .
+
+
+###  https://w3id.org/into#Research_Interest
+:Research_Interest rdf:type owl:Class ;
+                   rdfs:subClassOf owl:Thing ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :researchInterestOf ;
+                                     owl:someValuesFrom :Person
+                                   ] .
+
+
+###  https://w3id.org/into#Research_Student
+:Research_Student rdf:type owl:Class ;
+                  rdfs:subClassOf :Student ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasResearchInterest ;
+                                    owl:someValuesFrom :Research_Interest
+                                  ] ;
+                  owl:disjointWith :Undergraduate_Student .
+
+
+###  https://w3id.org/into#Research_Topic
+:Research_Topic rdf:type owl:Class ;
+                rdfs:comment """<b>Research topic</b> refers to the core area in which some one has done 
+    or doing research for his/her PhD degree"""@en .
+
+
+###  https://w3id.org/into#Senior_Research_Student
+:Senior_Research_Student rdf:type owl:Class ;
+                         rdfs:subClassOf :Research_Student .
+
+
+###  https://w3id.org/into#Student
+:Student rdf:type owl:Class ;
+         rdfs:subClassOf :Person ;
+         owl:disjointWith :Teacher .
+
+
+###  https://w3id.org/into#Teacher
+:Teacher rdf:type owl:Class ;
+         rdfs:subClassOf :Person ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasResearchInterest ;
+                           owl:someValuesFrom :Research_Interest
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasQualification ;
+                           owl:hasValue :PhD
+                         ] .
+
+
+###  https://w3id.org/into#Thesis
+:Thesis rdf:type owl:Class ;
+        rdfs:subClassOf :Publication .
+
+
+###  https://w3id.org/into#Undergraduate_Course
+:Undergraduate_Course rdf:type owl:Class ;
+                      rdfs:subClassOf :Course_Name .
+
+
+###  https://w3id.org/into#Undergraduate_Student
+:Undergraduate_Student rdf:type owl:Class ;
+                       rdfs:subClassOf :Student ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :ugStudent ;
+                                         owl:someValuesFrom :Undergraduate_Course
+                                       ] .
+
+
+###  https://w3id.org/into#Unit
+:Unit rdf:type owl:Class .
+
+
+###  https://w3id.org/into#Workshop
+:Workshop rdf:type owl:Class ;
+          rdfs:subClassOf :Events .
+
+
+###  https://w3id.org/into#WorkshopArticle
+:WorkshopArticle rdf:type owl:Class ;
+                 rdfs:subClassOf :Article .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/into#A.R.D._Prasad
+:A.R.D._Prasad rdf:type owl:NamedIndividual ,
+                        :Associate_Professor ;
+               :belongsToCentre :ISIBC ;
+               :editorOfEvents :DL2005 ,
+                               :ICSD2007 ;
+               :hasAffiliation :DRTC ;
+               :hasGender :male ;
+               :hasQualification :MLISc ,
+                                 :MPhil ;
+               :hasResearchInterest :AI ,
+                                    :Digital_library ,
+                                    :NLP ,
+                                    :Ontology ;
+               :supervisorOf :Biswanath_Dutta ,
+                             :Nabonita_Guha ,
+                             :Sanjeev_Kumar_Sunny ;
+               :age "57"^^xsd:int ;
+               :city "Bangalore"^^xsd:string ;
+               :country "India"^^xsd:string ;
+               :email "ard@drtc.isibang.ac.in"^^xsd:string ;
+               :firstName "ARD"^^xsd:string ;
+               :hasTeachingExperience 10 ;
+               :homepage "http://drtc.isibang.ac.in/~ard"^^xsd:anyURI ;
+               :lastName "Prasad"^^xsd:string ;
+               :rollNo "ASSP039"^^xsd:string .
+
+
+###  https://w3id.org/into#ADIS_1st_year
+:ADIS_1st_year rdf:type owl:NamedIndividual ,
+                        :ADIS .
+
+
+###  https://w3id.org/into#ADIS_2nd_year
+:ADIS_2nd_year rdf:type owl:NamedIndividual ,
+                        :ADIS .
+
+
+###  https://w3id.org/into#AI
+:AI rdf:type owl:NamedIndividual ,
+             :Research_Interest ;
+    :researchInterestOf :A.R.D._Prasad .
+
+
+###  https://w3id.org/into#Agrometry
+:Agrometry rdf:type owl:NamedIndividual ,
+                    :Research_Interest ;
+           :researchInterestOf :SS_Panza .
+
+
+###  https://w3id.org/into#Anand_Kumar_Pandey
+:Anand_Kumar_Pandey rdf:type owl:NamedIndividual ,
+                             :Junior_Research_Student ;
+                    :belongsToCentre :ISIBC ;
+                    :hasAffiliation :DRTC ;
+                    :hasDiscipline :Library_and_Information_Science ;
+                    :hasGender :male ;
+                    :hasQualification :BCom ,
+                                      :MLISc ;
+                    :hasResearchInterest :Digital_library ;
+                    :hasSupervisor :JohnSmith ;
+                    :city "Beneras"^^xsd:string ;
+                    :email "anand@drtc.isibang.ac.in"^^xsd:string ;
+                    :firstName "Anand"^^xsd:string ;
+                    :homepage "http://drtc.isibang.ac.in/~anand"^^xsd:anyURI ;
+                    :lastName "Pandey"^^xsd:string ;
+                    :rollNo "RS075"^^xsd:string .
+
+
+###  https://w3id.org/into#Anthropology
+:Anthropology rdf:type owl:NamedIndividual ,
+                       :Discipline .
+
+
+###  https://w3id.org/into#Automatic_classification
+:Automatic_classification rdf:type owl:NamedIndividual ,
+                                   :Research_Interest ;
+                          :researchInterestOf :JohnSmith .
+
+
+###  https://w3id.org/into#BA
+:BA rdf:type owl:NamedIndividual ,
+             :Qualification .
+
+
+###  https://w3id.org/into#BCom
+:BCom rdf:type owl:NamedIndividual ,
+               :Qualification .
+
+
+###  https://w3id.org/into#BMath_1st_year
+:BMath_1st_year rdf:type owl:NamedIndividual ,
+                         :BMath .
+
+
+###  https://w3id.org/into#BMath_2nd_year
+:BMath_2nd_year rdf:type owl:NamedIndividual ,
+                         :BMath .
+
+
+###  https://w3id.org/into#BMath_3rd_year
+:BMath_3rd_year rdf:type owl:NamedIndividual ,
+                         :BMath .
+
+
+###  https://w3id.org/into#BSc
+:BSc rdf:type owl:NamedIndividual ,
+              :Qualification .
+
+
+###  https://w3id.org/into#BStat_1st_year
+:BStat_1st_year rdf:type owl:NamedIndividual ,
+                         :BStat .
+
+
+###  https://w3id.org/into#BStat_2nd_year
+:BStat_2nd_year rdf:type owl:NamedIndividual ,
+                         :BStat .
+
+
+###  https://w3id.org/into#BStat_3rd_year
+:BStat_3rd_year rdf:type owl:NamedIndividual ,
+                         :BStat .
+
+
+###  https://w3id.org/into#Bibliometrics
+:Bibliometrics rdf:type owl:NamedIndividual ,
+                        :Research_Interest ;
+               :researchInterestOf :I.K._Ravichandra_Rao .
+
+
+###  https://w3id.org/into#Biswanath_Dutta
+:Biswanath_Dutta rdf:type owl:NamedIndividual ,
+                          :Senior_Research_Student ;
+                 :belongsToCentre :ISIBC ;
+                 :hasAffiliation :DRTC ;
+                 :hasDiscipline :Library_and_Information_Science ;
+                 :hasGender :male ;
+                 :hasQualification :BSc ,
+                                   :MLISc ;
+                 :hasResearchInterest :Ontology ,
+                                      :SWS ;
+                 :hasSupervisor :A.R.D._Prasad ;
+                 :researchArea :Semantic_Web_based_e-Government_services ;
+                 :city "Kolkata"^^xsd:string ;
+                 :country "India"^^xsd:string ;
+                 :email "bisu@drtc.isibang.ac.in"^^xsd:string ;
+                 :firstName "Biswanath"^^xsd:string ;
+                 :homepage "http://drtc.isibang.ac.in/~bisu"^^xsd:anyURI ;
+                 :lastName "Dutta"^^xsd:string ;
+                 :rollNo "RS039"^^xsd:string .
+
+
+###  https://w3id.org/into#Commerce
+:Commerce rdf:type owl:NamedIndividual ,
+                   :Discipline .
+
+
+###  https://w3id.org/into#Computer_Science
+:Computer_Science rdf:type owl:NamedIndividual ,
+                           :Discipline .
+
+
+###  https://w3id.org/into#DL2005
+:DL2005 rdf:type owl:NamedIndividual ,
+                 :Workshop ;
+        :eventsEditor :A.R.D._Prasad ;
+        :heldOn "21-24 Mar 2004"^^xsd:string ;
+        :topicOf "Workshop on Digital Libraries"^^xsd:string .
+
+
+###  https://w3id.org/into#DRTC
+:DRTC rdf:type owl:NamedIndividual ,
+               :Unit ;
+      :affiliationOf :Manju_M .
+
+
+###  https://w3id.org/into#Data_mining
+:Data_mining rdf:type owl:NamedIndividual ,
+                      :Research_Interest ;
+             :researchInterestOf :I.K._Ravichandra_Rao .
+
+
+###  https://w3id.org/into#Digital_Library
+:Digital_Library rdf:type owl:NamedIndividual ,
+                          :Project ;
+                 :hasPrincipalInvestigator :JohnSmith ;
+                 :hasProjectDuration "47"^^xsd:int ;
+                 :projectStarted "2006-03-02"^^xsd:date ;
+                 rdfs:comment ""^^xsd:string ;
+                 rdfs:label "Digital Library"^^xsd:string .
+
+
+###  https://w3id.org/into#Digital_library
+:Digital_library rdf:type owl:NamedIndividual ,
+                          :Research_Interest ;
+                 :researchInterestOf :A.R.D._Prasad ,
+                                     :Vinit_Kumar .
+
+
+###  https://w3id.org/into#EMU
+:EMU rdf:type owl:NamedIndividual ,
+              :Unit ;
+     :affiliationOf :SS_Panza .
+
+
+###  https://w3id.org/into#Faceted_ontology
+:Faceted_ontology rdf:type owl:NamedIndividual ,
+                           :Research_Topic .
+
+
+###  https://w3id.org/into#Geometry
+:Geometry rdf:type owl:NamedIndividual ,
+                   :Research_Interest ;
+          :researchInterestOf :TSSK_Rao .
+
+
+###  https://w3id.org/into#HigherSecondary
+:HigherSecondary rdf:type owl:NamedIndividual ,
+                          :Qualification .
+
+
+###  https://w3id.org/into#History
+:History rdf:type owl:NamedIndividual ,
+                  :Discipline .
+
+
+###  https://w3id.org/into#I.K._Ravichandra_Rao
+:I.K._Ravichandra_Rao rdf:type owl:NamedIndividual ,
+                               :Professor ;
+                      :belongsToCentre :ISIBC ;
+                      :hasAffiliation :DRTC ;
+                      :hasGender :male ;
+                      :hasResearchInterest :Bibliometrics ,
+                                           :Data_mining ;
+                      :researchArea :Quantitative_analysis ;
+                      :age "65"^^xsd:int ;
+                      :city "Mangalore"^^xsd:string ;
+                      :email "akr@drtc.isibang.ac.in"^^xsd:string ;
+                      :firstName "IK Ravichandra"^^xsd:string ;
+                      :hasTeachingExperience 17 ;
+                      :homepage "http://drtc.isibang.ac.in/~ikr"^^xsd:anyURI ;
+                      :lastName "Rao"^^xsd:string ;
+                      :rollNo "Prof003"^^xsd:string .
+
+
+###  https://w3id.org/into#ICSD2007
+:ICSD2007 rdf:type owl:NamedIndividual ,
+                   :Conference ;
+          :eventsEditor :A.R.D._Prasad ;
+          :heldOn "21-23 Feb 2007"^^xsd:string ;
+          :topicOf "International Conference on Semantic Web and Digital Libraries"^^xsd:string ;
+          rdfs:label "International Conference on Semantic Web and Digital Libraries"^^xsd:string .
+
+
+###  https://w3id.org/into#ICT2006
+:ICT2006 rdf:type owl:NamedIndividual ,
+                  :Conference ;
+         :eventsEditor :JohnSmith ;
+         :heldOn "11-14 Mar 2006"^^xsd:string ;
+         :topicOf "National Conference on Information Communication and Technology"^^xsd:string .
+
+
+###  https://w3id.org/into#ISIBC
+:ISIBC rdf:type owl:NamedIndividual ,
+                :Centre ;
+       :centretHead :TSSK_Rao ;
+       :listedCourse :ADIS_1st_year ,
+                     :ADIS_2nd_year ,
+                     :BMath_1st_year ,
+                     :BMath_2nd_year ,
+                     :BMath_3rd_year ,
+                     :MMath_1st_year ,
+                     :MMath_2nd_year .
+
+
+###  https://w3id.org/into#ISICC
+:ISICC rdf:type owl:NamedIndividual ,
+                :Centre ;
+       :centretHead :SS_Panza ;
+       :listedCourse :BStat_1st_year ,
+                     :BStat_2nd_year ,
+                     :BStat_3rd_year .
+
+
+###  https://w3id.org/into#ISIDC
+:ISIDC rdf:type owl:NamedIndividual ,
+                :Centre .
+
+
+###  https://w3id.org/into#JohnSmith
+:JohnSmith rdf:type owl:NamedIndividual ,
+                    :Assistant_professor ;
+           :belongsToCentre :ISIBC ;
+           :editorOfEvents :ICT2006 ,
+                           :NC2005 ;
+           :hasAffiliation :DRTC ;
+           :hasGender :female ;
+           :hasResearchInterest :Automatic_classification ,
+                                :Ontology ;
+           :supervisorOf :Anand_Kumar_Pandey ,
+                         :Mithun_Raj_M ;
+           :age "47"^^xsd:int ;
+           :city "Bangalore"^^xsd:string ;
+           :email "devika@drtc.isibang.ac.in"^^xsd:string ;
+           :firstName "Devika P."^^xsd:string ;
+           :hasTeachingExperience 5 ;
+           :homepage "http://drtc.isibang.ac.in/~devika"^^xsd:anyURI ;
+           :lastName "Madalli"^^xsd:string ;
+           :rollNo "Lec003"^^xsd:string .
+
+
+###  https://w3id.org/into#KS_Raghavan
+:KS_Raghavan rdf:type owl:NamedIndividual ,
+                      :Professor ;
+             :belongsToCentre :ISIBC ;
+             :hasAffiliation :DRTC ;
+             :hasGender :male ;
+             :hasResearchInterest :Knowledge_Management ;
+             :birthday "2007-11-24"^^xsd:string ;
+             :city "Bangalore"^^xsd:string ;
+             :email "ksraghavan@drtc.isibang.ac.in"^^xsd:string ;
+             :firstName "KS"^^xsd:string ;
+             :hasTeachingExperience 30 ;
+             :homepage "http://drtc.isibang.ac.in/~ksr"^^xsd:anyURI ;
+             :lastName "Raghavan"^^xsd:string ;
+             :rollNo "Prof01102005"^^xsd:string .
+
+
+###  https://w3id.org/into#Knowledge_Management
+:Knowledge_Management rdf:type owl:NamedIndividual ,
+                               :Research_Interest ;
+                      :researchInterestOf :KS_Raghavan .
+
+
+###  https://w3id.org/into#Library_and_Information_Science
+:Library_and_Information_Science rdf:type owl:NamedIndividual ,
+                                          :Discipline .
+
+
+###  https://w3id.org/into#MA
+:MA rdf:type owl:NamedIndividual ,
+             :Qualification .
+
+
+###  https://w3id.org/into#MCom
+:MCom rdf:type owl:NamedIndividual ,
+               :Qualification .
+
+
+###  https://w3id.org/into#MLISc
+:MLISc rdf:type owl:NamedIndividual ,
+                :Qualification ;
+       rdfs:comment "Equivalent to ADIS"^^xsd:string .
+
+
+###  https://w3id.org/into#MMath_1st_year
+:MMath_1st_year rdf:type owl:NamedIndividual ,
+                         :MMath .
+
+
+###  https://w3id.org/into#MMath_2nd_year
+:MMath_2nd_year rdf:type owl:NamedIndividual ,
+                         :MMath .
+
+
+###  https://w3id.org/into#MPhil
+:MPhil rdf:type owl:NamedIndividual ,
+                :Qualification .
+
+
+###  https://w3id.org/into#MSc
+:MSc rdf:type owl:NamedIndividual ,
+              :Qualification .
+
+
+###  https://w3id.org/into#Manju_M
+:Manju_M rdf:type owl:NamedIndividual ,
+                  :Assistant ;
+         :belongsToCentre :ISIBC ;
+         :hasAffiliation :DRTC ;
+         :hasGender :female ;
+         :hasQualification :BA ,
+                           :MLISc ;
+         :email "manju@drtc.isibang.ac.in"^^xsd:string ;
+         :firstName "Manju"^^xsd:string ;
+         :lastName "M."^^xsd:string ;
+         :state "Kerala"^^xsd:string ;
+         rdfs:label "Manju M."^^xsd:string .
+
+
+###  https://w3id.org/into#Mathematics
+:Mathematics rdf:type owl:NamedIndividual ,
+                      :Discipline .
+
+
+###  https://w3id.org/into#Metrics
+:Metrics rdf:type owl:NamedIndividual ,
+                  :Qualification .
+
+
+###  https://w3id.org/into#Mithun_Raj_M
+:Mithun_Raj_M rdf:type owl:NamedIndividual ,
+                       :Postgraduate_Student ;
+              :belongsToCentre :ISIBC ;
+              :hasAffiliation :DRTC ;
+              :hasDiscipline :Library_and_Information_Science ,
+                             :Physics ;
+              :hasGender :male ;
+              :hasQualification :BSc ;
+              :hasSupervisor :JohnSmith ;
+              :pgStudent :ADIS_2nd_year ;
+              :ZIP ""^^xsd:string ;
+              :city "Trichur"^^xsd:string ;
+              :country "India"^^xsd:string ;
+              :email "mithun@drtc.isibang.ac.in"^^xsd:string ;
+              :firstName "Mithun Raj"^^xsd:string ;
+              :homepage "http://drtc.isibang.ac.in/~mithun"^^xsd:anyURI ;
+              :state "Kerala"^^xsd:string ;
+              rdfs:label "Mithun Raj M."^^xsd:string .
+
+
+###  https://w3id.org/into#NC2005
+:NC2005 rdf:type owl:NamedIndividual ,
+                 :Conference ;
+        :eventsEditor :JohnSmith ;
+        :heldOn "22-24 Feb 2005"^^xsd:string ;
+        :topicOf "National Seminar on Consortia"^^xsd:string .
+
+
+###  https://w3id.org/into#NLP
+:NLP rdf:type owl:NamedIndividual ,
+              :Research_Interest ;
+     :researchInterestOf :A.R.D._Prasad .
+
+
+###  https://w3id.org/into#Nabonita_Guha
+:Nabonita_Guha rdf:type owl:NamedIndividual ,
+                        :Senior_Research_Student ;
+               :belongsToCentre :ISIBC ;
+               :hasAffiliation :DRTC ;
+               :hasDiscipline :Library_and_Information_Science ;
+               :hasGender :female ;
+               :hasQualification :BA ,
+                                 :MLISc ;
+               :hasResearchInterest :Digital_library ,
+                                    :Ontology ;
+               :hasSupervisor :A.R.D._Prasad ;
+               :researchArea :Faceted_ontology ;
+               :city "Ranchi"^^xsd:string ;
+               :country "India"^^xsd:string ;
+               :email ""^^xsd:string ;
+               :firstName "Nabonita"^^xsd:string ;
+               :homepage "http://drtc.isibang.ac.in/~guha"^^xsd:anyURI ;
+               :lastName "Guha"^^xsd:string ;
+               :rollNo "RS031"^^xsd:string ;
+               :state "Jharkhand"^^xsd:string .
+
+
+###  https://w3id.org/into#Next_generation_catalogue
+:Next_generation_catalogue rdf:type owl:NamedIndividual ,
+                                    :Research_Topic .
+
+
+###  https://w3id.org/into#Ontology
+:Ontology rdf:type owl:NamedIndividual ,
+                   :Research_Interest ;
+          :researchInterestOf :A.R.D._Prasad ,
+                              :Biswanath_Dutta .
+
+
+###  https://w3id.org/into#Operations_Research
+:Operations_Research rdf:type owl:NamedIndividual ,
+                              :Discipline .
+
+
+###  https://w3id.org/into#PhD
+:PhD rdf:type owl:NamedIndividual ,
+              :Qualification ;
+     rdfs:comment "Bachelors of Commerce"^^xsd:string .
+
+
+###  https://w3id.org/into#Physics
+:Physics rdf:type owl:NamedIndividual ,
+                  :Discipline .
+
+
+###  https://w3id.org/into#Pradip_Patra
+:Pradip_Patra rdf:type owl:NamedIndividual ,
+                       :Undergraduate_Student ;
+              :belongsToCentre :ISICC ;
+              :hasAffiliation :SMU ;
+              :hasGender :male ;
+              :ugStudent :BStat_2nd_year ;
+              :ZIP "100008"^^xsd:string ;
+              :city "Kolkata"^^xsd:string ;
+              :country "India"^^xsd:string ;
+              :email "pradip@isical.ac.in"^^xsd:string ;
+              :firstName "Pradip"^^xsd:string ;
+              :homepage "http://isical.ac.in/~pradip"^^xsd:anyURI ;
+              :lastName "Patra"^^xsd:string ;
+              :state "West Bengal"^^xsd:string .
+
+
+###  https://w3id.org/into#Quantitative_analysis
+:Quantitative_analysis rdf:type owl:NamedIndividual ,
+                                :Research_Topic .
+
+
+###  https://w3id.org/into#SMU
+:SMU rdf:type owl:NamedIndividual ,
+              :Unit ;
+     :affiliationOf :TSSK_Rao .
+
+
+###  https://w3id.org/into#SQC
+:SQC rdf:type owl:NamedIndividual ,
+              :Unit .
+
+
+###  https://w3id.org/into#SS_Panza
+:SS_Panza rdf:type owl:NamedIndividual ,
+                   :Professor ;
+          :belongsToCentre :ISICC ;
+          :hasAffiliation :EMU ;
+          :hasGender :male ;
+          :hasResearchInterest :Agrometry .
+
+
+###  https://w3id.org/into#SWS
+:SWS rdf:type owl:NamedIndividual ,
+              :Research_Interest ;
+     :researchInterestOf :Biswanath_Dutta .
+
+
+###  https://w3id.org/into#Sanjeev_Kumar_Sunny
+:Sanjeev_Kumar_Sunny rdf:type owl:NamedIndividual ,
+                              :Postgraduate_Student ;
+                     :belongsToCentre :ISIBC ;
+                     :hasAffiliation :DRTC ;
+                     :hasDiscipline :History ,
+                                    :Library_and_Information_Science ;
+                     :hasGender :male ;
+                     :hasQualification :BA ;
+                     :hasSupervisor :A.R.D._Prasad ;
+                     :pgStudent :ADIS_2nd_year ;
+                     :birthday "1980-12-08"^^xsd:string ;
+                     :city "Patna"^^xsd:string ;
+                     :email "sanjeev@drtc.isibang.ac.in"^^xsd:string ;
+                     :firstName "Sanjeev kumar"^^xsd:string ;
+                     :homepage "http;//drtc.isibang.ac.in/~sanjeev"^^xsd:anyURI ;
+                     :lastName "Sunny"^^xsd:string ;
+                     :rollNo "ADIS0605"^^xsd:string .
+
+
+###  https://w3id.org/into#Semantic_Web_based_e-Government_services
+:Semantic_Web_based_e-Government_services rdf:type owl:NamedIndividual ,
+                                                   :Research_Topic .
+
+
+###  https://w3id.org/into#Statistics
+:Statistics rdf:type owl:NamedIndividual ,
+                     :Discipline .
+
+
+###  https://w3id.org/into#TSSK_Rao
+:TSSK_Rao rdf:type owl:NamedIndividual ,
+                   :Professor ;
+          :belongsToCentre :ISIBC ;
+          :hasAffiliation :SMU ;
+          :hasGender :male ;
+          :hasResearchInterest :Geometry ;
+          :birthday "1950-01-01"^^xsd:string ;
+          :firstName "TSSK"^^xsd:string ;
+          :lastName "Rao"^^xsd:string .
+
+
+###  https://w3id.org/into#Vinit_Kumar
+:Vinit_Kumar rdf:type owl:NamedIndividual ,
+                      :Junior_Research_Student ;
+             :belongsToCentre :ISIBC ;
+             :hasAffiliation :DRTC ;
+             :hasDiscipline :Library_and_Information_Science ;
+             :hasGender :male ;
+             :hasQualification :BSc ,
+                               :MLISc ;
+             :hasResearchInterest :Digital_library ;
+             :ZIP "233305"^^xsd:string ;
+             :birthday "1984-08-02"^^xsd:string ;
+             :city "Ghazipur city"^^xsd:string ;
+             :country "India"^^xsd:string ;
+             :email "vinit@drtc.isibang.ac.in"^^xsd:string ;
+             :firstName "Vinit"^^xsd:string ;
+             :homepage "http://drtc.isibang.ac.in/~vinit"^^xsd:anyURI ;
+             :lastName "Kumar"^^xsd:string ;
+             :phoneNo "9986180163"^^xsd:string ;
+             :rollNo "RS065"^^xsd:string ;
+             :state "UP"^^xsd:string .
+
+
+###  https://w3id.org/into#female
+:female rdf:type owl:NamedIndividual ,
+                 :Gender .
+
+
+###  https://w3id.org/into#male
+:male rdf:type owl:NamedIndividual ,
+               :Gender .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :DRTC
+                        :EMU
+                        :SMU
+                        :SQC
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
